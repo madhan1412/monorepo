@@ -23,10 +23,12 @@ pipeline {
           //  sh 'go test -v ./... '        
             }
           }
-        stage("Build Tenant Container Image"){}
+        stage("Build Tenant Container Image"){
           steps{
                 echo "Second stage"
             }
+        }
+          
          // when { anyOf { changeset "**/tenant/**"; expression { fileExists ('.changes/tenant') }}}
           //steps { script { stages("tenant", env.TAG_NAME, BRANCH_NAME, "rbi-tenant" )  }}}
         //steps { script { sh "echo 'inside tenant'"} }}
