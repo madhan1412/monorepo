@@ -7,8 +7,8 @@ pipeline {
   }
 
   stages {
-
-      stage("Tenant repo"){
+     parallel {
+        stage("Tenant repo"){
         //when { anyOf { changeset "**/tenant/**"; expression { fileExists ('.changes/tenant') }}}
         stages{
           stage("Unit Test tenant"){
@@ -135,6 +135,9 @@ pipeline {
          // steps {  script{ stages("viewer", env.TAG_NAME, BRANCH_NAME, "rbi-viewer" ) }}}
         }
       }
+
+     }
+      
 
 
   }
