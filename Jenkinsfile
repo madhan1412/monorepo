@@ -9,7 +9,7 @@ pipeline {
   stages {
 
       stage("Tenant repo"){
-        when { anyOf { changeset "**/tenant/**"; expression { fileExists ('.changes/tenant') }}}
+        //when { anyOf { changeset "**/tenant/**"; expression { fileExists ('.changes/tenant') }}}
         stages{
           stage("Unit Test tenant"){
           /*agent {
@@ -23,7 +23,10 @@ pipeline {
           //  sh 'go test -v ./... '        
             }
           }
-       // stage("Build Tenant Container Image"){
+        stage("Build Tenant Container Image"){}
+          steps{
+                echo "Second stage"
+            }
          // when { anyOf { changeset "**/tenant/**"; expression { fileExists ('.changes/tenant') }}}
           //steps { script { stages("tenant", env.TAG_NAME, BRANCH_NAME, "rbi-tenant" )  }}}
         //steps { script { sh "echo 'inside tenant'"} }}
@@ -31,7 +34,7 @@ pipeline {
       }
 
       stage("Security repo"){
-        when { anyOf { changeset "**/security/**"; expression { return fileExists ('.changes/security') }}}
+        //when { anyOf { changeset "**/security/**"; expression { return fileExists ('.changes/security') }}}
         stages{
           stage("Unit Test Security"){
             /*agent {
@@ -45,7 +48,11 @@ pipeline {
           //  sh 'go test -v ./... '        
             }
           }
-      //  stage("Build Security Container Image"){
+        stage("Build Security Container Image"){
+            steps{
+                echo "Second stage"
+            }
+        }
       //  when { anyOf { changeset "**/security/**"; expression { return fileExists ('.changes/security') }}}
        //   steps { script { stages("security", env.TAG_NAME, BRANCH_NAME, "rbi-security" ) }}}
         //steps { script { sh "echo 'inside security'"} }  
@@ -53,7 +60,7 @@ pipeline {
       }
 
       stage("Notification repo"){
-        when { anyOf { changeset "**/notification/**"; expression { return fileExists ('.changes/notification') }}}
+        //when { anyOf { changeset "**/notification/**"; expression { return fileExists ('.changes/notification') }}}
         stages{
           stage("Unit Test Notification repo"){
             /*agent {
@@ -67,14 +74,18 @@ pipeline {
           //  sh 'go test -v ./... '        
             }
           }       
-       // stage("Build Notification Container Image"){
+        stage("Build Notification Container Image"){
+            steps{
+                echo "Second stage"
+            }
+        }
        //    when { anyOf { changeset "**/notification/**"; expression { return fileExists ('.changes/notification') }}} 
        //   steps {  script{ stages("notification", env.TAG_NAME, BRANCH_NAME, "rbi-notification" ) }}} 
         }
       }
 
       stage("Controlcenter repo"){
-        when { anyOf { changeset "**/controlcenter/**"; expression { return fileExists ('.changes/controlcenter') }}}
+        //when { anyOf { changeset "**/controlcenter/**"; expression { return fileExists ('.changes/controlcenter') }}}
         stages{
           stage("Unit Test Controlcenter repo"){
             /*agent {
@@ -88,14 +99,18 @@ pipeline {
           //  sh 'go test -v ./... '        
             }
           }  
-      //  stage("Build Controlcenter Container Image"){
+        stage("Build Controlcenter Container Image"){
+            steps{
+                echo "Second stage"
+            }
+        }
         //  when { anyOf { changeset "**/controlcenter/**"; expression { return fileExists ('.changes/controlcenter') }}}
          // steps {  script{ stages("controlcenter", env.TAG_NAME, BRANCH_NAME, "rbi-controlcenter" ) }}}
         }
       }
       
      stage("Viewer repo"){
-        when { anyOf { changeset "**/viewer/**"; expression { return fileExists ('.changes/viewer') }}}
+        //when { anyOf { changeset "**/viewer/**"; expression { return fileExists ('.changes/viewer') }}}
         stages{
           stage("Unit Test Viewer repo"){
             /*agent {
@@ -109,7 +124,11 @@ pipeline {
           //  sh 'go test -v ./... '        
             }
           }       
-      //  stage("Build Viewer Container Image"){
+        stage("Build Viewer Container Image"){
+            steps{
+                echo "Second stage"
+            }
+        }
        //   when { anyOf { changeset "**/viewer/**"; expression { return fileExists ('.changes/viewer') }}} 
          // steps {  script{ stages("viewer", env.TAG_NAME, BRANCH_NAME, "rbi-viewer" ) }}}
         }
